@@ -30,7 +30,7 @@ const LOBBY = (() => {
         else {
             let [host, client] = maybe_game.game
             result = maybe_game.id
-            maybe_game.game[1] = createHalf(socket.id, 'bacteria')
+            client = maybe_game.game[1] = createHalf(socket.id, 'bacteria')
             io.to(host.socketID)
               .emit('found-game', host)
             io.to(client.socketID)
