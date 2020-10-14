@@ -30,7 +30,7 @@ const LOBBY = (() => {
         else {
             let [host, client] = maybe_game.game
             result = maybe_game.id
-            client = createHalf(socket.id, 'bacteria')
+            maybe_game.game[1] = createHalf(socket.id, 'bacteria')
             io.to(host.socketID)
               .emit('found-game', host)
             io.to(client.socketID)
@@ -85,7 +85,6 @@ io.on('connection', socket => {
     socket.on('action', action => {
         LOBBY.updateGame(reducer(LOBBY.getGame(ID), action), ID)
         const [host, client] = LOBBY.getGame(ID).game
-        if(!client) return
 
         io.to(host.socketID).emit('update', host)
         io.to(client.socketID).emit('update', client)
