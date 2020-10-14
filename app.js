@@ -15,11 +15,6 @@ const server = http.createServer(app)
 
 const io = socketIO(server)
 
-io.configure(function () { 
-    io.set("transports", ["xhr-polling"])
-    io.set("polling duration", 10)
-});
-
 const LOBBY = (() => {
     const game_list = []
     let lastID = 0
