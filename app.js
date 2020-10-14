@@ -30,13 +30,13 @@ const LOBBY = (() => {
         let maybe_game = game_list.find(g => g.game[1] === null)        
         if(maybe_game === undefined) result = registerGame(createHalf(socket.id, 'cell'))
         else {
-            console.log(maybe_game.game[0].cells)
+            const [host, client] = maybe_game.game
             result = maybe_game.id
-            maybe_game.game[1] = createHalf(socket.id, 'bacteria')
-            io.to(maybe_game.game[0].socketID)
-              .emit('found-game', maybe_game.game[0])
-            io.to(maybe_game.game[1].socketID)
-              .emit('found-game', maybe_game.game[1])
+            client = createHalf(socket.id, 'bacteria')
+            io.to(host.socketID)
+              .emit('found-game', host)
+            io.to(client.socketID)
+              .emit('found-game', client)
         }
         return result
     }
