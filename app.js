@@ -2,7 +2,7 @@ const express   = require('express')
 const http      = require('http')
 const socketIO  = require('socket.io')
 
-const port = process.env.PORT || 3001
+const port = process.env.PORT || 5000
 const index = require('./routes/index')
 const loadMap = require('./utils/loadMap')
 const reducer = require('./gameReducer')
@@ -15,7 +15,10 @@ const server = http.createServer(app)
 
 const io = socketIO(server)
 
-const noop = () => {}
+io.configure(function () { 
+    io.set("transports", ["xhr-polling"])
+    io.set("polling duration", 10)
+});
 
 const LOBBY = (() => {
     const game_list = []
@@ -96,7 +99,7 @@ io.on('connection', socket => {
         }
     })
 
-    socket.on('find-new-game', id => {
+    socket.on('find-new-game', _ => {
         socket.emit('finding-game')
         ID = LOBBY.findGame(socket)
     })
