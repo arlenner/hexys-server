@@ -1,0 +1,13 @@
+{
+  "name": "hexagonos-clone-server",
+  "version": "1.0.0",
+  "description": "server for hexagonos-clone",
+  "main": "index.js",
+  "author": "Alexander Ross Lennert",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
+  }
+}

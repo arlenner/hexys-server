@@ -1,0 +1,67 @@
+{
+    "classic": { 
+        "00": "invisible",  "10": "invisible",  "20": "invisible",  "30": "invisible",  "40": "invisible",                
+
+        "01": "invisible",  "11": "invisible",  "21": "invisible",  "31": "empty",      "41": "cell",
+
+        "02": "invisible",  "12": "empty",      "22": "empty",      "32": "empty",      "42": "empty",
+
+        "03": "bacteria",   "13": "empty",      "23": "empty",      "33": "empty",      "43": "empty",
+
+        "04": "empty",      "14": "empty",      "24": "empty",      "34": "empty",      "44": "invisible",         
+
+        "05": "empty",      "15": "empty",      "25": "empty",      "35": "invisible",  "45": "empty",                          
+
+        "06": "empty",      "16": "empty",      "26": "empty",      "36": "empty",      "46": "empty", 
+
+        "07": "cell",       "17": "empty",      "27": "empty",      "37": "empty",      "47": "empty",
+
+        "08": "invisible",  "18": "invisible",  "28": "empty",      "38": "empty",      "48": "empty",  
+
+        "09": "invisible",  "19": "invisible",  "29": "invisible",  "39": "invisible",  "49": "bacteria",
+
+
+        "50": "invisible",  "60": "invisible",  "70": "invisible",  "80": "invisible",  "90": "invisible",           
+        
+        "51": "empty",      "61": "invisible",  "71": "invisible",  "81": "invisible",  "91": "invisible",                
+        
+        "52": "empty",      "62": "empty",      "72": "empty",      "82": "invisible",  "92": "invisible",
+        
+        "53": "empty",      "63": "empty",      "73": "empty",      "83": "bacteria",   "93": "invisible",
+        
+        "54": "empty",      "64": "empty",      "74": "empty",      "84": "empty",      "94": "invisible",
+                                 
+        "55": "invisible",  "65": "empty",      "75": "empty",      "85": "empty",      "95": "invisible",
+        
+        "56": "empty",      "66": "empty",      "76": "empty",      "86": "empty",      "96": "invisible",
+        
+        "57": "empty",      "67": "empty",      "77": "empty",      "87": "cell",       "97": "invisible",
+        
+        "58": "empty",      "68": "empty",      "78": "invisible",  "88": "invisible",  "98": "invisible",   
+        
+        "59": "invisible",  "69": "invisible",  "79": "invisible",  "89": "invisible",  "99": "invisible"  
+        
+    },
+    "mapB": { 
+        "00": "invisible",  "01": "invisible",      "02": "invisible",  "03": "invisible",   "04": "cell", 
+        "05": "empty",      "06": "empty",          "07": "empty",      "08": "empty",       "09": "bacteria",
+        "10": "invisible",  "11": "invisible",      "12": "empty",      "13": "empty",       "14": "empty",
+        "15": "empty",      "16": "empty",          "17": "empty",      "18": "empty",       "19": "empty",
+        "20": "invisible",  "21": "invisible",      "22": "empty",      "23": "empty",       "24": "empty",
+        "25": "empty",      "26": "empty",          "27": "empty",      "28": "empty",       "29": "empty",
+        "30": "invisible",  "31": "empty",          "32": "empty",      "33": "empty",       "34": "empty",
+        "35": "empty",      "36": "empty",          "37": "invisible",  "38": "empty",       "39": "empty",
+        "40": "invisible",  "41": "bacteria",       "42": "empty",      "43": "invisible",   "44": "empty",
+        "45": "empty",      "46": "empty",          "47": "empty",      "48": "empty",       "49": "empty",
+        "50": "empty",      "51": "empty",          "52": "empty",      "53": "empty",       "54": "empty",
+        "55": "empty",      "56": "invisible",      "57": "empty",      "58": "cell",        "59": "invisible",
+        "60": "empty",      "61": "empty",          "62": "invisible",  "63": "empty",       "64": "empty",
+        "65": "empty",      "66": "empty",          "67": "empty",      "68": "empty",       "69": "invisible",
+        "70": "empty",      "71": "empty",          "72": "empty",      "73": "empty",       "74": "empty",
+        "75": "empty",      "76": "empty",          "77": "empty",      "78": "invisible",   "79": "invisible",
+        "80": "empty",      "81": "empty",          "82": "empty",      "83": "empty",       "84": "empty",
+        "85": "empty",      "86": "empty",          "87": "empty",      "88": "invisible",   "89": "invisible",
+        "90": "cell",       "91": "empty",          "92": "empty",      "93": "empty",       "94": "empty",
+        "95": "bacteria",   "96": "invisible",      "97": "invisible",  "98": "invisible",   "99": "invisible"
+    }
+}
