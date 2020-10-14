@@ -85,6 +85,7 @@ io.on('connection', socket => {
     socket.on('action', action => {
         LOBBY.updateGame(reducer(LOBBY.getGame(ID), action), ID)
         const [host, client] = LOBBY.getGame(ID).game
+        if(!client) return
 
         io.to(host.socketID).emit('update', host)
         io.to(client.socketID).emit('update', client)
