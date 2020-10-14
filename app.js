@@ -28,7 +28,7 @@ const LOBBY = (() => {
         let maybe_game = game_list.find(g => g.game[1] === null)        
         if(maybe_game === undefined) result = registerGame(createHalf(socket.id, 'cell'))
         else {
-            const [host, client] = maybe_game.game
+            let [host, client] = maybe_game.game
             result = maybe_game.id
             client = createHalf(socket.id, 'bacteria')
             io.to(host.socketID)
