@@ -40,11 +40,11 @@ const checkIsGameOver = (io, state) => {
         const result = [[], []]
         cells.forEach(c => {
             for(const c2 of cellArr) {
-                isValidMove(c, c2) ? result[0].push(c2)
+                isValidMove(c, c2) ? result[0].push(c)
             : /** else */            noop()
             }
             for(const c3 of bactArr) {
-                isValidMove(c, c3)  ? result[1].push(c3)
+                isValidMove(c, c3)  ? result[1].push(c)
             :   /** else */           noop()
             }
         })

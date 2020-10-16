@@ -7,6 +7,7 @@ const index = require('./routes/index')
 const loadMap = require('./utils/loadMap')
 const reducer = require('./gameReducer')
 const checkIsGameOver = require('./isGameOver')
+const Player = require('./player')
 
 const app = express()
 app.use(index)
@@ -19,18 +20,20 @@ const LOBBY = (() => {
     const game_list = []
     let lastID = 0
 
-    const createHalf = (id, team) => {
-        return { ...GAME_MODEL, cells: loadMap(), team, socketID: id }
+    const createHalf = (player, team) => {
+        return { ...GAME_MODEL, cells: loadMap(), team, socketID: player.id, name: player.name }
     }
 
-    const findGame = socket => {
+    const findGame = player => {
         let result
         let maybe_game = game_list.find(g => g.game[1] === null)        
-        if(maybe_game === undefined) result = registerGame(createHalf(socket.id, 'cell'))
+        if(maybe_game === undefined) result = registerGame(createHalf(player, 'cell'))
         else {
             let [host, client] = maybe_game.game
             result = maybe_game.id
-            client = maybe_game.game[1] = createHalf(socket.id, 'bacteria')
+            client = maybe_game.game[1] = createHalf(player, 'bacteria')
+            maybe_game.game[1].opponentName = maybe_game.game[0].name
+            maybe_game.game[0].opponentName = maybe_game.game[1].name
             io.to(host.socketID)
               .emit('found-game', host)
             io.to(client.socketID)
@@ -38,9 +41,10 @@ const LOBBY = (() => {
         }
         return result
     }
-    const registerGame = host => {
-        const result = { id: lastID++, game: [host, null] }
+    const registerGame = hostModel => {
+        const result = { id: lastID++, game: [hostModel, null] }
         game_list.push(result)
+        io.emit('update-lobby', all())
         return result.id
     }
 
@@ -54,6 +58,7 @@ const LOBBY = (() => {
     const deleteGame = id => (console.log(`deleting game ${id}`), game_list.splice(game_list.indexOf(game_list.find(g => g.id === id)), 1))
     
     const all = () => game_list
+
     return { registerGame, getGame, updateGame, deleteGame, all, findGame }
 })()
 
@@ -72,10 +77,8 @@ const GAME_MODEL = {
 
 io.on('connection', socket => {
     console.log('New client connection.')
-    socket.emit('finding-game')
-    let ID = LOBBY.findGame(socket)
-
-    console.log(ID)
+    socket.emit('connected', LOBBY.all())
+    let ID
 
     socket.on('disconnect', () => {
         console.log('Client disconnected.')
@@ -94,9 +97,10 @@ io.on('connection', socket => {
         }
     })
 
-    socket.on('find-new-game', _ => {
+    socket.on('find-new-game', ({id, name}) => {
+        const me = new Player(id, name)
         socket.emit('finding-game')
-        ID = LOBBY.findGame(socket)
+        ID = LOBBY.findGame(me)
     })
 })
 
